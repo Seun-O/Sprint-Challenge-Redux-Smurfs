@@ -33,3 +33,19 @@ export const getData = () => dispatch => {
       dispatch({ type: FETCH_DATA_FAIL, payload: err });
     });
 };
+
+export const POST_DATA_START = "POST_DATA_START";
+export const POST_DATA_SUCCESS = "POST_DATA_SUCCESS";
+export const POST_DATA_FAIL = "POST_DATA_FAIL";
+
+export const addSmurf = smurf => dispatch => {
+  dispatch({ type: POST_DATA_START });
+  axios
+    .post(`http://localhost:3333/smurfs`, smurf)
+    .then(res => {
+      dispatch({ type: POST_DATA_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({ type: POST_DATA_FAIL, payload: err });
+    });
+};

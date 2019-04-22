@@ -4,7 +4,10 @@
 import {
   FETCH_DATA_START,
   FETCH_DATA_FAIL,
-  FETCH_DATA_SUCCESS
+  FETCH_DATA_SUCCESS,
+  POST_DATA_FAIL,
+  POST_DATA_START,
+  POST_DATA_SUCCESS
 } from "../actions";
 
 const initialState = {
@@ -19,7 +22,8 @@ const initialState = {
 /*
   You'll only need one smurf reducer for this project.
   Feel free to export it as a default and import as rootReducer. 
-  This will guard your namespacing issues.
+  This will guard your namespacing issues.import { POST_DATA_FAIL } from '../actions/index';
+
   There is no need for 'combineReducers' in this project.
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
@@ -44,6 +48,25 @@ const reducer = (state = initialState, action) => {
         ...state,
         error: action.payload,
         fetchingSmurfs: false
+      };
+    case POST_DATA_START:
+      return {
+        ...state,
+        addingSmurf: true,
+        error: ""
+      };
+    case POST_DATA_SUCCESS:
+      return {
+        ...state,
+        addingSmurf: false,
+        smurfs: action.payload,
+        error: ""
+      };
+    case POST_DATA_FAIL:
+      return {
+        ...state,
+        addingSmurf: false,
+        error: action.payload
       };
     default:
       return state;
