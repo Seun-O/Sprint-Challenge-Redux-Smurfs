@@ -3,11 +3,18 @@
 */
 import {
   FETCH_DATA_START,
-  FETCH_DATA_FAIL,
-  FETCH_DATA_SUCCESS,
-  POST_DATA_FAIL,
   POST_DATA_START,
-  POST_DATA_SUCCESS
+  DELETE_DATA_START,
+  EDIT_DATA_START,
+  FETCH_DATA_SUCCESS,
+  POST_DATA_SUCCESS,
+  DELETE_DATA_SUCCESS,
+  UPDATE_DATA_SUCCESS,
+  FETCH_DATA_FAIL,
+  POST_DATA_FAIL,
+  DELETE_DATA_FAIL,
+  UPDATE_DATA_FAIL,
+  EDIT_DATA_STOP
 } from "../actions";
 
 const initialState = {
@@ -67,6 +74,46 @@ const reducer = (state = initialState, action) => {
         ...state,
         addingSmurf: false,
         error: action.payload
+      };
+    case DELETE_DATA_START:
+      return {
+        ...state,
+        deletingSmurf: true,
+        error: ""
+      };
+    case DELETE_DATA_SUCCESS:
+      return {
+        ...state,
+        deletingSmurf: false,
+        smurfs: action.payload
+      };
+    case DELETE_DATA_FAIL:
+      return {
+        ...state,
+        deletingSmurf: false,
+        error: action.payload
+      };
+    case UPDATE_DATA_SUCCESS:
+      return {
+        ...state,
+        smurfs: action.payload,
+        error: ""
+      };
+    case UPDATE_DATA_FAIL:
+      return {
+        ...state,
+        updatingSmurf: false,
+        error: action.payload
+      };
+    case EDIT_DATA_START:
+      return {
+        ...state,
+        updatingSmurf: true
+      };
+    case EDIT_DATA_STOP:
+      return {
+        ...state,
+        updatingSmurf: false
       };
     default:
       return state;

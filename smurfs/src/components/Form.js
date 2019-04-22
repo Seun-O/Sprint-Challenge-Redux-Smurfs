@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 
 import { addSmurf } from "../actions";
 
+import "./Form.css";
+
 class Form extends Component {
   state = { name: "", age: "", height: "" };
 
@@ -20,6 +22,7 @@ class Form extends Component {
       height: this.state.height
     };
     this.props.addSmurf(smurf);
+    this.setState({ name: "", age: "", height: "" });
   };
   render() {
     return (
