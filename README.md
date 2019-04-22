@@ -22,9 +22,24 @@ In this challenge, you are to build the Smurfs village once again, only this tim
 
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
-- [ ] In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
-- [ ] What is the difference between Application state and Component state? When would be a good time to use one over the other?
-- [ ] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+- [X] In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+
+  Actions are objects that contain an action type and a piece of data that we associate with the action type. These alone don't do anything.
+
+  Reducers are then passed the action, and it is where the action is executed and the changes are made to the state according to the action type and data.
+
+  The store is where the state of the application can only be changed by reducers. It maintains the state for the whole application and if the state changes in the store any component referencing the state will be re-rendered.
+
+  The store is the single piece of truth because it manages the state for the whole application and can't be updated with setState. Only dispatched actions can change the state via the reducer.
+
+
+- [X] What is the difference between Application state and Component state? When would be a good time to use one over the other?
+
+    Application state refers to data/state that is referenced through the whole applications like fetched api data. Component state is data that is local to a component like a form component keeping track of input values to make it a controlled form.
+
+- [X] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+
+  It allows us to dispatch actions to the reducers asynchronously. For example when we fetch data and the data is not available immediately thunk allows the action not to block the execution stack. The actions flow through the middleware and are dispatched to all reducers.
 
 ## Project Set Up
 
