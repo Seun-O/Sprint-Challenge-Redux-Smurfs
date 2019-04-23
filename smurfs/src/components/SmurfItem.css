@@ -1,0 +1,22 @@
+.smurf-edit {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 2rem;
+}
+
+.smurf-edit img {
+  max-width: 100%;
+}
+.smurf-edit input {
+  width: 68%;
+}
+
+.smurf-edit h1,
+p {
+  margin: 0;
+  margin-bottom: 1rem;
+}

@@ -8,11 +8,14 @@ const Smurf = props => {
     e.preventDefault();
     props.deleteSmurf(props.id);
   };
-
+  const getImage = () => {
+    return `https://source.unsplash.com/collection/2178251/200x200`;
+  };
   return (
     <div>
       <div>
         <h1>{props.name}</h1>
+        <img src={getImage()} alt="" />
         <p>Age: {props.age}</p>
         <p>Height: {props.height}</p>
       </div>

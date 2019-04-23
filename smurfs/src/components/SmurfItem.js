@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-
+import "./SmurfItem.css";
 import { editStart, editStop, updateSmurf } from "../actions";
 
 class SmurfItem extends React.Component {
@@ -26,7 +26,11 @@ class SmurfItem extends React.Component {
   render() {
     return (
       <div>
-        <div>
+        <div className="smurf-edit">
+          <img
+            src="https://source.unsplash.com/collection/2178251/200x200"
+            alt=""
+          />
           {this.props.editing ? (
             <input
               onChange={this.handleChange}
@@ -60,14 +64,14 @@ class SmurfItem extends React.Component {
           ) : (
             <p>{this.state.height}</p>
           )}
-        </div>
-        <div>
-          <button onClick={() => this.props.editStart()}>Edit</button>
-          {this.props.editing ? (
-            <button onClick={() => this.props.editStop()}>Save</button>
-          ) : (
-            <button onClick={this.handleClick}>Done</button>
-          )}
+          <div>
+            <button onClick={() => this.props.editStart()}>Edit</button>
+            {this.props.editing ? (
+              <button onClick={() => this.props.editStop()}>Save</button>
+            ) : (
+              <button onClick={this.handleClick}>Done</button>
+            )}
+          </div>
         </div>
       </div>
     );
